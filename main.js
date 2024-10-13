@@ -7,7 +7,7 @@ app.use(express.json()); // For parsing application/json
 
 // Define a simple route
 app.get('/', (req, res) => {
-    res.send('Hello heroku paas world!!');
+    res.send('Hello heroku paas world !');
 });
 
 // Start the server
