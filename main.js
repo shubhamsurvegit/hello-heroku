@@ -4,8 +4,8 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware (optional)
-app.use(express.json()); // For parsing application/json
+
+app.use(express.json());
 
 // Define a simple route
 app.get('/', (req, res) => {
