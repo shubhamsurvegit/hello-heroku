@@ -1,1 +1,1 @@
-WeasyPrint
+WeasyPrint==56
