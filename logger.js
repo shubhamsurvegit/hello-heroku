@@ -8,8 +8,7 @@ const logger = createLogger({
     format.json()
   ),
   transports: [
-    new transports.Console(), // Log to console
-    // You can add other transports here, e.g., files or remote logging services
+    new transports.File({ filename: `${__dirname}/logs/log-data.log` }),
   ],
 });
 
