@@ -12,7 +12,7 @@ app.use(express.json()); // For parsing application/json
 // Define a simple route
 app.get('/', (req, res) => {
     logger.info('Root endpoint accessed');
-    res.send('Hello heroku paas world!');
+    res.send('Hello heroku paas world !');
 });
 
 app.get('/get-env', (req, res) => {
