@@ -1,4 +1,4 @@
-const tracer = require('dd-trace').init({service:"hi-dd",env:"uat",logInjection:true}); // Initialize Datadog tracer
+const tracer = require('dd-trace').init(); // Initialize Datadog tracer
 const logger = require('./logger');
 const express = require('express');
 require('dotenv').config();
@@ -13,6 +13,11 @@ app.use(express.json()); // For parsing application/json
 app.get('/', (req, res) => {
     logger.info('Root endpoint accessed');
     res.send('Hello heroku paas world !');
+});
+
+app.get('/test', (req, res) => {
+    logger.info('ENV accessed');
+    res.json('tested');
 });
 
 app.get('/get-env', (req, res) => {
