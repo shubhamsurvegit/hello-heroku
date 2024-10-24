@@ -1,5 +1,5 @@
 // const tracer = require('dd-trace').init({service:"hello-heroku-app",env:"uat",logInjection:true}); // Initialize Datadog tracer
-console.log(tracer)
+// console.log(tracer)
 const logger = require('./logger');
 const express = require('express');
 require('dotenv').config();
