@@ -1,4 +1,17 @@
 const tracer = require('dd-trace').init({appsec:true}); // Initialize Datadog tracer
+tracer.setUser({
+    id: '123456789', // *REQUIRED* Unique identifier of the user.
+
+    // All other fields are optional.
+    email: 'jane.doe@example.com', // Email of the user.
+    name: 'Jane Doe', // User-friendly name of the user.
+    session_id: '987654321', // Session ID of the user.
+    role: 'admin', // Role the user is making the request under.
+    scope: 'read:message, write:files', // Scopes or granted authorizations the user currently possesses.
+
+    // Arbitrary fields are also accepted to attach custom data to the user (RBAC, Oauth, etc…)
+    custom_tag: 'custom data'
+  })
 const logger = require('./logger');
 const express = require('express');
 require('dotenv').config();
@@ -19,7 +32,7 @@ app.get('/test', (req, res) => {
     logger.info('ENV accessed');
     res.json('tested');
 });
-
+https://us5.datadoghq.com/security/appsec/inventory/services?query=
 app.get('/get-env', (req, res) => {
     logger.info('ENV accessed');
     res.json(process.env);
