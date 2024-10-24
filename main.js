@@ -1,4 +1,4 @@
-const tracer = require('dd-trace').init(); // Initialize Datadog tracer
+const tracer = require('dd-trace').init({appsec:true}); // Initialize Datadog tracer
 const logger = require('./logger');
 const express = require('express');
 require('dotenv').config();
