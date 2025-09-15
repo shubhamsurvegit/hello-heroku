@@ -1,20 +1,20 @@
-const tracer = require('dd-trace').init({appsec:true}); // Initialize Datadog tracer
+const tracer = require("dd-trace").init({ appsec: true }); // Initialize Datadog tracer
 tracer.setUser({
-    id: '123456789', // *REQUIRED* Unique identifier of the user.
+  id: "123456789", // *REQUIRED* Unique identifier of the user.
 
-    // All other fields are optional.
-    email: 'jane.doe@example.com', // Email of the user.
-    name: 'Jane Doe', // User-friendly name of the user.
-    session_id: '987654321', // Session ID of the user.
-    role: 'admin', // Role the user is making the request under.
-    scope: 'read:message, write:files', // Scopes or granted authorizations the user currently possesses.
+  // All other fields are optional.
+  email: "jane.doe@example.com", // Email of the user.
+  name: "Jane Doe", // User-friendly name of the user.
+  session_id: "987654321", // Session ID of the user.
+  role: "admin", // Role the user is making the request under.
+  scope: "read:message, write:files", // Scopes or granted authorizations the user currently possesses.
 
-    // Arbitrary fields are also accepted to attach custom data to the user (RBAC, Oauth, etc…)
-    custom_tag: 'custom data'
-  })
-const logger = require('./logger');
-const express = require('express');
-require('dotenv').config();
+  // Arbitrary fields are also accepted to attach custom data to the user (RBAC, Oauth, etc…)
+  custom_tag: "custom data",
+});
+const logger = require("./logger");
+const express = require("express");
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,25 +23,25 @@ const port = process.env.PORT || 3000;
 app.use(express.json()); // For parsing application/json
 
 // Define a simple route
-app.get('/', (req, res) => {
-    logger.info('Root endpoint accessed');
-    res.send('Hello heroku paas world !');
+app.get("/", (req, res) => {
+  logger.info("Root endpoint accessed");
+  res.send("Hello heroku paas world !");
 });
 
-app.get('/test', (req, res) => {
-    logger.info('ENV accessed');
-    res.json('tested');
+app.get("/test", (req, res) => {
+  logger.info("ENV accessed");
+  res.json("tested");
 });
-https://us5.datadoghq.com/security/appsec/inventory/services?query=
-app.get('/get-env', (req, res) => {
-    logger.info('ENV accessed');
-    res.json(process.env);
+//us5.datadoghq.com/security/appsec/inventory/services?query=
+https: app.get("/get-env", (req, res) => {
+  logger.info("ENV accessed");
+  res.json(process.env);
 });
 
 // Start the server
 app.listen(port, () => {
-    logger.info(`Server is running on port ${port}`);
-    console.log(`Server is running at port :${port}`);
+  logger.info(`Server is running on port ${port}`);
+  console.log(`Server is running at port :${port}`);
 });
 
 // const { exec } = require('child_process');
